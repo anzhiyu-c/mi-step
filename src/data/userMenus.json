@@ -1,0 +1,371 @@
+{
+  "code": 0,
+  "data": [{
+      "id": 1,
+      "name": "我的账号",
+      "type": 2,
+      "url": "/main/account",
+      "icon": "el-icon-user-solid",
+      "sort": 2,
+      "children": []
+    },
+    {
+      "id": 2,
+      "name": "后台管理",
+      "type": 1,
+      "url": "/main/system",
+      "icon": "el-icon-data-line",
+      "sort": 2,
+      "children": [{
+          "id": 4,
+          "url": "/main/system/menu",
+          "name": "目录管理",
+          "sort": 103,
+          "type": 2,
+          "children": [{
+              "id": 21,
+              "url": null,
+              "name": "创建菜单",
+              "sort": null,
+              "type": 3,
+              "parentId": 4,
+              "permission": "system:menu:create"
+            },
+            {
+              "id": 22,
+              "url": null,
+              "name": "删除菜单",
+              "sort": null,
+              "type": 3,
+              "parentId": 4,
+              "permission": "system:menu:delete"
+            },
+            {
+              "id": 23,
+              "url": null,
+              "name": "修改菜单",
+              "sort": null,
+              "type": 3,
+              "parentId": 4,
+              "permission": "system:menu:update"
+            },
+            {
+              "id": 24,
+              "url": null,
+              "name": "查询菜单",
+              "sort": null,
+              "type": 3,
+              "parentId": 4,
+              "permission": "system:menu:query"
+            }
+          ],
+          "parentId": 1
+        },
+        {
+          "id": 25,
+          "url": "/main/system/role",
+          "name": "角色管理",
+          "sort": 102,
+          "type": 2,
+          "children": [{
+              "id": 26,
+              "url": null,
+              "name": "创建角色",
+              "sort": null,
+              "type": 3,
+              "parentId": 25,
+              "permission": "system:role:create"
+            },
+            {
+              "id": 27,
+              "url": null,
+              "name": "删除角色",
+              "sort": null,
+              "type": 3,
+              "parentId": 25,
+              "permission": "system:role:delete"
+            },
+            {
+              "id": 28,
+              "url": null,
+              "name": "修改角色",
+              "sort": null,
+              "type": 3,
+              "parentId": 25,
+              "permission": "system:role:update"
+            },
+            {
+              "id": 29,
+              "url": null,
+              "name": "查询角色",
+              "sort": null,
+              "type": 3,
+              "parentId": 25,
+              "permission": "system:role:query"
+            }
+          ],
+          "parentId": 1
+        },
+        {
+          "id": 2,
+          "url": "/main/system/user",
+          "name": "用户管理",
+          "sort": 100,
+          "type": 2,
+          "children": [{
+              "id": 5,
+              "url": null,
+              "name": "创建用户",
+              "sort": null,
+              "type": 3,
+              "parentId": 2,
+              "permission": "system:users:create"
+            },
+            {
+              "id": 6,
+              "url": null,
+              "name": "删除用户",
+              "sort": null,
+              "type": 3,
+              "parentId": 2,
+              "permission": "system:users:delete"
+            },
+            {
+              "id": 7,
+              "url": null,
+              "name": "修改用户",
+              "sort": null,
+              "type": 3,
+              "parentId": 2,
+              "permission": "system:users:update"
+            },
+            {
+              "id": 8,
+              "url": null,
+              "name": "查询用户",
+              "sort": null,
+              "type": 3,
+              "parentId": 2,
+              "permission": "system:users:query"
+            }
+          ],
+          "parentId": 1
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "商务管理",
+      "type": 1,
+      "url": "/main/business",
+      "icon": "el-icon-suitcase-1",
+      "sort": 4,
+      "children": [{
+          "id": 5,
+          "url": "/main/business/commodity",
+          "name": "商品管理",
+          "sort": 108,
+          "type": 2,
+          "children": [{
+              "id": 7,
+              "url": "/main/system/taobao",
+              "name": "淘宝",
+              "sort": 103,
+              "type": 2,
+              "children": [{
+                  "id": 21,
+                  "url": null,
+                  "name": "创建商品",
+                  "sort": null,
+                  "type": 3,
+                  "parentId": 5,
+                  "permission": "system:taobao:create"
+                },
+                {
+                  "id": 22,
+                  "url": null,
+                  "name": "删除商品",
+                  "sort": null,
+                  "type": 3,
+                  "parentId": 5,
+                  "permission": "system:taobao:delete"
+                },
+                {
+                  "id": 23,
+                  "url": null,
+                  "name": "修改商品",
+                  "sort": null,
+                  "type": 3,
+                  "parentId": 5,
+                  "permission": "system:taobao:update"
+                },
+                {
+                  "id": 24,
+                  "url": null,
+                  "name": "查询商品",
+                  "sort": null,
+                  "type": 3,
+                  "parentId": 5,
+                  "permission": "system:taobao:query"
+                }
+              ],
+              "parentId": 1
+            },
+            {
+              "id": 78,
+              "url": "/main/system/tiktok",
+              "name": "抖音",
+              "sort": 102,
+              "type": 2,
+              "children": [{
+                  "id": 26,
+                  "url": null,
+                  "name": "创建商品",
+                  "sort": null,
+                  "type": 3,
+                  "parentId": 78,
+                  "permission": "system:tiktok:create"
+                },
+                {
+                  "id": 27,
+                  "url": null,
+                  "name": "删除商品",
+                  "sort": null,
+                  "type": 3,
+                  "parentId": 78,
+                  "permission": "system:tiktok:delete"
+                },
+                {
+                  "id": 28,
+                  "url": null,
+                  "name": "修改商品",
+                  "sort": null,
+                  "type": 3,
+                  "parentId": 78,
+                  "permission": "system:tiktok:update"
+                },
+                {
+                  "id": 29,
+                  "url": null,
+                  "name": "查询商品",
+                  "sort": null,
+                  "type": 3,
+                  "parentId": 78,
+                  "permission": "system:tiktok:query"
+                }
+              ],
+              "parentId": 1
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "url": "/main/business/analysis",
+          "name": "数据分析",
+          "sort": 109,
+          "type": 2,
+          "children": [],
+          "parentId": 3
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "刷步管理",
+      "type": 1,
+      "url": "/main/step/task",
+      "icon": "el-icon-suitcase-1",
+      "sort": 4,
+      "children": [{
+        "id": 6,
+        "url": "/main/step/task",
+        "name": "任务管理",
+        "sort": 108,
+        "type": 2,
+        "children": [{
+            "id": 21,
+            "url": null,
+            "name": "创建任务",
+            "sort": null,
+            "type": 3,
+            "parentId": 5,
+            "permission": "system:taobao:create"
+          },
+          {
+            "id": 22,
+            "url": null,
+            "name": "删除任务",
+            "sort": null,
+            "type": 3,
+            "parentId": 5,
+            "permission": "system:taobao:delete"
+          },
+          {
+            "id": 23,
+            "url": null,
+            "name": "修改任务",
+            "sort": null,
+            "type": 3,
+            "parentId": 5,
+            "permission": "system:taobao:update"
+          },
+          {
+            "id": 24,
+            "url": null,
+            "name": "查询任务",
+            "sort": null,
+            "type": 3,
+            "parentId": 5,
+            "permission": "system:taobao:query"
+          }
+        ],
+        "parentId": 1
+      }, {
+        "id": 7,
+        "url": "/main/step/mi-account",
+        "name": "小米账号管理",
+        "sort": 108,
+        "type": 2,
+        "children": [{
+            "id": 21,
+            "url": null,
+            "name": "添加账号",
+            "sort": null,
+            "type": 3,
+            "parentId": 5,
+            "permission": "system:mi-account:create"
+          },
+          {
+            "id": 22,
+            "url": null,
+            "name": "删除账号",
+            "sort": null,
+            "type": 3,
+            "parentId": 5,
+            "permission": "system:mi-account:delete"
+          },
+          {
+            "id": 23,
+            "url": null,
+            "name": "修改账号",
+            "sort": null,
+            "type": 3,
+            "parentId": 5,
+            "permission": "system:mi-account:update"
+          },
+          {
+            "id": 24,
+            "url": null,
+            "name": "查询账号",
+            "sort": null,
+            "type": 3,
+            "parentId": 5,
+            "permission": "system:mi-account:query"
+          }
+        ],
+        "parentId": 1
+      }]
+    }
+
+  ]
+}

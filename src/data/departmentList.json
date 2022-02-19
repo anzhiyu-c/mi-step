@@ -1,0 +1,24 @@
+{
+  "code": 0,
+  "data": {
+    "list": [
+      {
+        "id": 5,
+        "name": "人事部",
+        "parentId": 1,
+        "createAt": "2021-01-02T10:04:02.000Z",
+        "updateAt": "2021-05-02T07:33:08.000Z",
+        "leader": "lily"
+      },
+      {
+        "id": 4,
+        "name": "客服部",
+        "parentId": 2,
+        "createAt": "2021-01-02T10:04:02.000Z",
+        "updateAt": "2021-08-03T11:14:32.000Z",
+        "leader": "lily"
+      }
+    ],
+    "totalCount": 2
+  }
+}
