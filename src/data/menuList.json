@@ -527,7 +527,7 @@
               "sort": null,
               "type": 3,
               "parentId": 5,
-              "permission": "system:mi-account:create"
+              "permission": "step:miaccount:create"
             },
             {
               "id": 22,
@@ -536,7 +536,7 @@
               "sort": null,
               "type": 3,
               "parentId": 5,
-              "permission": "system:mi-account:delete"
+              "permission": "step:miaccount:delete"
             },
             {
               "id": 23,
@@ -545,7 +545,7 @@
               "sort": null,
               "type": 3,
               "parentId": 5,
-              "permission": "system:mi-account:update"
+              "permission": "step:miaccount:update"
             },
             {
               "id": 24,
@@ -554,7 +554,7 @@
               "sort": null,
               "type": 3,
               "parentId": 5,
-              "permission": "system:mi-account:query"
+              "permission": "step:miaccount:query"
             }
           ],
           "parentId": 1

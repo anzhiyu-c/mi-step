@@ -3,7 +3,7 @@
  * @Author: 安知鱼
  * @Email: 2268025923@qq.com
  * @Date: 2021-09-23 12:37:42
- * @LastEditTime: 2022-02-19 21:55:19
+ * @LastEditTime: 2022-02-20 14:57:50
  * @LastEditors: 安知鱼
  */
 import { Module } from 'vuex'
@@ -87,6 +87,28 @@ const accountModule: Module<IAccountState, IRootStore> = {
       } else {
         ElMessage.error(changeStepResult.msg)
       }
+    },
+    async UpStepAllAction() {
+      const list = await require('@/data/miaccountList.json')
+      const stepFormList: Array<any> = []
+      list.data.list.forEach((item: any) => {
+        const stepForm = {
+          user: item.account,
+          pass: item.password,
+          count: item.step
+        }
+        stepFormList.push(stepForm)
+      })
+
+      stepFormList.forEach(async (item) => {
+        const changeStepResult = await changeStep(item)
+
+        if (changeStepResult.status === 1) {
+          ElMessage.success(item.user + changeStepResult.msg)
+        } else {
+          ElMessage.error(item.user + changeStepResult.msg)
+        }
+      })
     }
   }
 }

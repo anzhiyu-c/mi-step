@@ -3,18 +3,17 @@
  * @Author: 安知鱼
  * @Email: 2268025923@qq.com
  * @Date: 2021-08-30 17:21:27
- * @LastEditTime: 2021-09-16 12:48:15
+ * @LastEditTime: 2022-02-20 14:21:38
  * @LastEditors: 安知鱼
 -->
 <template>
   <div class="nav-header">
-    <i
-      class="fold-menu"
-      :class="isFold ? 'el-icon-s-fold' : 'el-icon-s-unfold'"
-      @click="handleFoldClick"
-    ></i>
+    <el-icon @click="handleFoldClick" class="fold-menu">
+      <expand v-if="isFold" />
+      <operation v-else />
+    </el-icon>
     <div class="content">
-      <an-breadcrumb :breadcrumbs="breadcrumbs" />
+      <an-breadcrumb :breadcrumbs="breadcrumbs" v-if="!isMobile" />
       <user-info />
     </div>
   </div>
@@ -28,6 +27,8 @@ import AnBreadcrumb from '@/base-ui/breadcrumb'
 import { pathMapBreadcrumbs } from '@/utils/map-menus'
 import { useStore } from '@/store'
 import { useRoute } from 'vue-router'
+
+import { useMobile } from '@/hooks'
 
 export default defineComponent({
   components: {
@@ -54,9 +55,14 @@ export default defineComponent({
       return pathMapBreadcrumbs(userMenus, currentPath)
     })
 
+    const isMobile = useMobile()
+    if (isMobile) {
+      handleFoldClick()
+    }
     return {
       breadcrumbs,
       isFold,
+      isMobile,
       handleFoldClick
     }
   }
@@ -66,6 +72,7 @@ export default defineComponent({
 <style scoped lang="less">
 .nav-header {
   display: flex;
+  align-items: center;
   width: 100%;
 
   .fold-menu {

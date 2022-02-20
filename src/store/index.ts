@@ -7,6 +7,7 @@ import { IRootStore, IStoreType } from './type'
 import login from './login/login'
 import system from './main/system/system'
 import account from './main/account/account'
+import step from './main/step/step'
 
 const store = createStore<IRootStore>({
   state() {
@@ -68,7 +69,8 @@ const store = createStore<IRootStore>({
   modules: {
     login,
     system,
-    account
+    account,
+    step
   }
 })
 

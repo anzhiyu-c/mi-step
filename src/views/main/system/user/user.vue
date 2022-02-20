@@ -92,7 +92,7 @@ export default defineComponent({
     })
 
     // 3.调用hook获取公共变量和函数
-    const [pageModalRef, defaultInfo, handleNewData, handleEditData] =
+    const { pageModalRef, defaultInfo, handleNewData, handleEditData } =
       usePageModal('用户', newCallback, editCallback)
 
     return {

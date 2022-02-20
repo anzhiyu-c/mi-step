@@ -3,10 +3,11 @@
  * @Author: 安知鱼
  * @Email: 2268025923@qq.com
  * @Date: 2021-09-13 13:45:46
- * @LastEditTime: 2021-09-14 10:43:05
+ * @LastEditTime: 2022-02-20 14:44:16
  * @LastEditors: 安知鱼
  */
 import { ref } from 'vue'
+import { useStore } from 'vuex'
 import PageModal from '@/components/page-modal'
 
 type CallbackFn = (item?: any) => void
@@ -16,6 +17,7 @@ export function usePageModal(
   newCb?: CallbackFn,
   editCb?: CallbackFn
 ) {
+  const store = useStore()
   const pageModalRef = ref<InstanceType<typeof PageModal>>()
   const defaultInfo = ref({})
   const handleNewData = () => {
@@ -35,5 +37,16 @@ export function usePageModal(
 
     editCb && editCb(item)
   }
-  return [pageModalRef, defaultInfo, handleNewData, handleEditData]
+  const UpStepBtnClick = (item: any) => {
+    defaultInfo.value = { ...item }
+
+    store.dispatch('account/upStepAction', defaultInfo.value)
+  }
+  return {
+    pageModalRef,
+    defaultInfo,
+    handleNewData,
+    handleEditData,
+    UpStepBtnClick
+  }
 }

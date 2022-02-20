@@ -3,7 +3,7 @@
  * @Author: 安知鱼
  * @Email: 2268025923@qq.com
  * @Date: 2021-09-01 08:33:41
- * @LastEditTime: 2022-02-19 19:34:54
+ * @LastEditTime: 2022-02-20 11:09:39
  * @LastEditors: 安知鱼
  */
 
@@ -141,6 +141,7 @@ export function mapMenusToPermissions(userMenus: any[]) {
   }
 
   _recurseGetPermission(userMenus)
+
   return permissions
 }
 

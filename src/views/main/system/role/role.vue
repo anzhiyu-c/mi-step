@@ -62,7 +62,7 @@ export default defineComponent({
         elTreeRef.value?.setCheckedKeys(leafKeys, false)
       })
     }
-    const [pageModalRef, defaultInfo, handleNewData, handleEditData] =
+    const { pageModalRef, defaultInfo, handleNewData, handleEditData } =
       usePageModal('角色', undefined, editCallBack)
 
     const store = useStore()
