@@ -10,12 +10,14 @@
         accept="image/jpg, image/jpeg, image/png, image/gif"
         :action="actionUrl"
         :data="extraParams"
-        :headers="headers"
+        :headers="(headers as any)"
         :multiple="false"
         :show-file-list="false"
         :auto-upload="false"
         :on-change="selectFile"
         :http-request="httpRequest"
+        :limit="1"
+        :on-exceed="handleExceed"
       >
         <template #trigger>
           <el-avatar
@@ -64,11 +66,10 @@
   </el-dialog>
 </template>
 
-<script lang="ts">
-import { defineComponent, reactive, ref, computed } from 'vue'
+<script lang="ts" setup>
+import { reactive, ref, computed } from 'vue'
 import { useStore } from '@/store'
 import VuePictureCropper, { cropper } from 'vue-picture-cropper'
-import cache from '@/utils/cache'
 import { ElUpload } from 'element-plus'
 import { ElMessage } from 'element-plus'
 
@@ -78,104 +79,85 @@ import {
   extraParams,
   headers
 } from '../config/avatar-config'
+import type { UploadFile } from 'element-plus/es/components/upload/src/upload.type'
 interface Result {
   dataURL: string
   blobURL: string
   cropFile: any
 }
-export default defineComponent({
-  components: {
-    VuePictureCropper
-  },
-  setup() {
-    const store = useStore()
-    const uploadInput = ref<InstanceType<typeof ElUpload> | null>(null)
-    const avatarImg = computed(() => cache.getCache('userInfo').avatarUrl)
-    const cropperImg = ref<string>('')
-    const result: Result = reactive({
-      dataURL: '',
-      blobURL: '',
-      cropFile: ''
-    })
-    const isShowDialog = ref<boolean>(false)
 
-    const selectFile = (file: any): void => {
-      result.dataURL = ''
-      result.blobURL = ''
-
-      if (!file) return
-      const reader: FileReader = new FileReader()
-      reader.readAsDataURL(file.raw)
-      reader.onload = (): void => {
-        // 更新裁切弹窗的图片源
-        cropperImg.value = String(reader.result)
-        isShowDialog.value = true
-        uploadInput?.value?.clearFiles()
-      }
-    }
-
-    const getResult = async (): Promise<void> => {
-      // const base64: string = cropper.getDataURL()
-      const blob: Blob = await cropper.getBlob()
-      result.cropFile = await cropper.getFile()
-
-      let isLt2M =
-        result.cropFile.size > 1024 * 1024 * 5 && blob.size > 1024 * 1024 * 5
-      if (isLt2M) {
-        ElMessage.error('裁剪后的图片不能大于5M')
-        return
-      }
-      // result.dataURL = base64
-      try {
-        result.blobURL = URL.createObjectURL(blob)
-      } catch (e) {
-        result.blobURL = ''
-      }
-      // avatarImg.value = result.blobURL
-
-      uploadInput?.value?.submit()
-    }
-    const clear = (): void => {
-      cropper.clear()
-    }
-    const reset = (): void => {
-      cropper.reset()
-    }
-    const httpRequest = (request: any) => {
-      const { action, data, filename } = request
-      let formData = new FormData()
-      for (let key in data) {
-        formData.append(key, data[key])
-      }
-      formData.append(filename, result.cropFile)
-      // console.log(formData.get(filename))
-      store.dispatch('account/changeAvatarAction', {
-        url: action,
-        formData: formData
-      })
-      isShowDialog.value = false
-    }
-
-    return {
-      // 数据
-      cropperImg,
-      defaultAvatarImg,
-      extraParams,
-      headers,
-      avatarImg,
-      actionUrl,
-      uploadInput,
-      result,
-      isShowDialog,
-      // 方法
-      httpRequest,
-      selectFile,
-      getResult,
-      clear,
-      reset
-    }
-  }
+const store = useStore()
+const uploadInput = ref<InstanceType<typeof ElUpload> | null>(null)
+const avatarImg = computed(() => store.state.account.userInfo.AvatarUrl)
+const cropperImg = ref<string>('')
+const result: Result = reactive({
+  dataURL: '',
+  blobURL: '',
+  cropFile: ''
 })
+const isShowDialog = ref<boolean>(false)
+
+const handleExceed = (files: any) => {
+  uploadInput.value!.clearFiles()
+  uploadInput.value!.handleStart(files[0])
+}
+
+const selectFile = (file: UploadFile): void => {
+  result.dataURL = ''
+  result.blobURL = ''
+
+  if (!file) return
+
+  const reader: FileReader = new FileReader()
+  reader.readAsDataURL(file.raw)
+  reader.onload = (): void => {
+    // 更新裁切弹窗的图片源
+    cropperImg.value = String(reader.result)
+    isShowDialog.value = true
+  }
+}
+
+const getResult = async (): Promise<void> => {
+  const base64: string = cropper.getDataURL()
+  const blob: Blob = await cropper.getBlob()
+  result.cropFile = await cropper.getFile()
+
+  let isLt2M =
+    result.cropFile.size > 1024 * 1024 * 5 && blob.size > 1024 * 1024 * 5
+  if (isLt2M) {
+    ElMessage.error('裁剪后的图片不能大于5M')
+    return
+  }
+  result.dataURL = base64
+  try {
+    result.blobURL = URL.createObjectURL(blob)
+  } catch (e) {
+    result.blobURL = ''
+  }
+
+  uploadInput.value!.submit()
+}
+const clear = (): void => {
+  cropper.clear()
+}
+const reset = (): void => {
+  cropper.reset()
+}
+
+const httpRequest = (request: any) => {
+  const { action, data, filename } = request
+  let formData = new FormData()
+  for (let key in data) {
+    formData.append(key, data[key])
+  }
+  formData.append(filename, result.cropFile)
+  console.log(formData.get(filename))
+  store.dispatch('account/changeAvatarAction', {
+    url: action,
+    formData: formData
+  })
+  isShowDialog.value = false
+}
 </script>
 
 <style scoped lang="less">

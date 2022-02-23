@@ -8,6 +8,7 @@ import store from './store'
 
 import 'normalize.css'
 import '@/assets/css/index.css'
+import 'element-plus/theme-chalk/display.css'
 
 const app = createApp(App)
 setupStore()

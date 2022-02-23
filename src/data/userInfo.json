@@ -8,6 +8,7 @@
     "enable": 1,
     "createAt": "2021-01-02T10:20:26.000Z",
     "updateAt": "2021-01-03T04:50:13.000Z",
+    "AvatarUrl": "https://unpkg.com/anzhiyu-blog@1.0.0/img/post/common/avatar.png",
     "role": {
       "id": 1,
       "name": "超级管理员",

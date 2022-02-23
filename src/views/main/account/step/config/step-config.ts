@@ -3,7 +3,7 @@
  * @Author: 安知鱼
  * @Email: 2268025923@qq.com
  * @Date: 2021-09-18 16:49:27
- * @LastEditTime: 2022-02-19 21:04:28
+ * @LastEditTime: 2022-02-22 21:41:58
  * @LastEditors: 安知鱼
  */
 
@@ -16,7 +16,7 @@ export const stepConfig: IForm = {
       type: 'input',
       label: '小米运动账号',
       placeholder: '请输入账号（仅支持手机号码）',
-      itemStyle: { margin: '20px 0', width: '40%' },
+      itemStyle: { margin: '20px 0', width: '100%' },
       rules: [
         {
           required: true,
@@ -37,13 +37,13 @@ export const stepConfig: IForm = {
           trigger: 'blur'
         }
       ],
-      itemStyle: { margin: '0px 0px 0px 0px', width: '40%' }
+      itemStyle: { margin: '0', width: '100%' }
     },
     {
       field: 'step',
       type: 'input',
       label: '刷取步数',
-      placeholder: '请输入步数，建议一次5000以内（0-99999）',
+      placeholder: '建议一次5000以内（0-99999）',
       rules: [
         {
           required: true,
@@ -56,10 +56,11 @@ export const stepConfig: IForm = {
           trigger: 'blur'
         }
       ],
-      itemStyle: { margin: '20px 0px 20px 0px', width: '40%' }
+      itemStyle: { margin: '20px 0px 20px 0px', width: '100%' }
     }
   ],
   labelWidth: '120px',
   itemStyle: { padding: '0px 0px' },
-  colLayout: { span: 24 }
+  colLayout: { span: 24 },
+  labelPosition: 'top'
 }

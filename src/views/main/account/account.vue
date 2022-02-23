@@ -8,9 +8,11 @@
         </div>
       </template>
       <div class="container">
-        <el-form label-width="90px">
+        <el-form label-width="90px" label-position="top">
           <el-form-item label="用户头像：">
-            <avatar></avatar>
+            <div class="avatar_box">
+              <Avatar></Avatar>
+            </div>
           </el-form-item>
           <el-form-item label="用户名称：">
             <el-input v-model="defaultForm.userName" readonly>
@@ -81,8 +83,12 @@ const ensureEditUserName = () => {
     text-align: left;
   }
   .container {
-    width: 30%;
-    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    .avatar_box {
+      display: flex;
+      justify-content: center;
+    }
   }
 }
 
@@ -98,5 +104,8 @@ const ensureEditUserName = () => {
 :deep(.el-input-group__append, .el-input-group__prepend) {
   background-color: #fff;
   color: #ce2513;
+}
+:deep(.el-form-item__content) {
+  justify-content: center;
 }
 </style>

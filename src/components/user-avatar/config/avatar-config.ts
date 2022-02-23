@@ -3,13 +3,12 @@
  * @Author: 安知鱼
  * @Email: 2268025923@qq.com
  * @Date: 2021-09-23 09:54:44
- * @LastEditTime: 2021-09-23 11:38:50
+ * @LastEditTime: 2022-02-22 21:54:40
  * @LastEditors: 安知鱼
  */
 import Cache from '@/utils/cache'
 // 上传路径
-export const actionUrl =
-  'http://211.149.191.209:8084/dataWarehousePortal/voluntarily/measuredData/measuredDataImport'
+export const actionUrl = 'https://jsonplaceholder.typicode.com/posts/'
 // 默认头像
 export const defaultAvatarImg =
   'https://jintianniu.oss-cn-hangzhou.aliyuncs.com/common/defaultAvatarImg.png'

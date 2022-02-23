@@ -3,7 +3,7 @@
  * @Author: 安知鱼
  * @Email: 2268025923@qq.com
  * @Date: 2021-09-05 16:59:30
- * @LastEditTime: 2022-02-11 14:23:52
+ * @LastEditTime: 2022-02-22 21:40:52
  * @LastEditors: 安知鱼
 -->
 <template>
@@ -13,9 +13,10 @@
     </div>
     <el-form
       :label-width="labelWidth"
+      :labelPosition="labelPosition"
       ref="formRef"
       :model="modelValue"
-      :inline="true"
+      :inline="inline"
     >
       <el-row>
         <template v-for="item in formItems" :key="item.label">
@@ -122,6 +123,10 @@ export default defineComponent({
     inline: {
       type: Boolean,
       default: false
+    },
+    labelPosition: {
+      type: String,
+      default: 'left'
     }
   },
   emits: ['update:modelValue'],
