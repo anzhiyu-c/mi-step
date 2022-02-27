@@ -89,7 +89,9 @@ interface Result {
 const store = useStore()
 const uploadInput = ref<InstanceType<typeof ElUpload> | null>(null)
 const avatarImg = computed(() => store.state.account.userInfo.AvatarUrl)
-const cropperImg = ref<string>('')
+const cropperImg = ref<string>(
+  'https://jintianniu.oss-cn-hangzhou.aliyuncs.com/common/defaultAvatarImg.png'
+)
 const result: Result = reactive({
   dataURL: '',
   blobURL: '',
